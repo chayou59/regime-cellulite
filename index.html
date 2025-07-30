@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Régime Express – 55 ans, 1m65, 75kg</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0fdf4;
+      color: #333;
+    }
+    header {
+      background-color: #4CAF50;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: #e8f5e9;
+      padding: 10px;
+    }
+    nav button {
+      margin: 5px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      background: #a5d6a7;
+      border: none;
+      font-weight: bold;
+      color: #1b5e20;
+      cursor: pointer;
+    }
+    nav button:hover {
+      background: #81c784;
+    }
+    section {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .recipe {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .recipe h3 {
+      margin-top: 0;
+      color: #388e3c;
+    }
+    .sub {
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+  <script>
+    function showDay(id) {
+      const sections = document.querySelectorAll("section[id]");
+      sections.forEach(sec => sec.style.display = "none");
+      document.getElementById(id).style.display = "block";
+    }
+    window.onload = () => showDay('lundi');
+  </script>
+</head>
+<body>
+  <header>🌿 Corps Harmonieux – Régime Anti-Cellulite</header>
+  <nav>
+    <button onclick="showDay('lundi')">Lundi</button>
+    <button onclick="showDay('mardi')">Mardi</button>
+    <button onclick="showDay('mercredi')">Mercredi</button>
+    <button onclick="showDay('jeudi')">Jeudi</button>
+    <button onclick="showDay('vendredi')">Vendredi</button>
+    <button onclick="showDay('samedi')">Samedi</button>
+    <button onclick="showDay('dimanche')">Dimanche</button>
+    <button onclick="showDay('astuces')">Astuces</button>
+  </nav>
+
+  <section id="lundi">
+    <div class="recipe">
+      <h3>Lundi</h3>
+      <p><strong>Petit-déjeuner :</strong> Skyr + kiwi + 1 c. à café de graines de lin</p>
+      <p><strong>Déjeuner :</strong> Poulet grillé + salade verte + tomates + huile d’olive</p>
+      <p><strong>Dîner :</strong> Œufs brouillés + courgettes sautées à l’ail</p>
+      <p><em class="sub">⚡ Préparation : moins de 10 min / ingrédients interchangeables</em></p>
+    </div>
+  </section>
+
+  <section id="mardi" style="display:none">
+    <div class="recipe">
+      <h3>Mardi</h3>
+      <p><strong>Petit-déjeuner :</strong> Fromage blanc + pomme râpée + cannelle</p>
+      <p><strong>Déjeuner :</strong> Filet de saumon + brocolis vapeur + riz semi-complet</p>
+      <p><strong>Dîner :</strong> Soupe de légumes maison + tartine de pain complet</p>
+    </div>
+  </section>
+
+  <section id="mercredi" style="display:none">
+    <div class="recipe">
+      <h3>Mercredi</h3>
+      <p><strong>Petit-déjeuner :</strong> 2 œufs coque + mouillettes de pain complet</p>
+      <p><strong>Déjeuner :</strong> Quinoa + pois chiches + courgettes + curry doux</p>
+      <p><strong>Dîner :</strong> Poêlée de légumes + 1 tranche de jambon maigre</p>
+    </div>
+  </section>
+
+  <section id="jeudi" style="display:none">
+    <div class="recipe">
+      <h3>Jeudi</h3>
+      <p><strong>Petit-déjeuner :</strong> Skyr + framboises + amandes concassées</p>
+      <p><strong>Déjeuner :</strong> Riz complet + crevettes sautées + poivrons</p>
+      <p><strong>Dîner :</strong> Omelette aux herbes + salade verte</p>
+    </div>
+  </section>
+
+  <section id="vendredi" style="display:none">
+    <div class="recipe">
+      <h3>Vendredi</h3>
+      <p><strong>Petit-déjeuner :</strong> Pain complet + purée d’avocat + 1 œuf</p>
+      <p><strong>Déjeuner :</strong> Tofu grillé + patate douce vapeur + brocolis</p>
+      <p><strong>Dîner :</strong> Soupe froide de concombre + yaourt nature</p>
+    </div>
+  </section>
+
+  <section id="samedi" style="display:none">
+    <div class="recipe">
+      <h3>Samedi</h3>
+      <p><strong>Petit-déjeuner :</strong> Compote sans sucre ajouté + poignée d’oléagineux</p>
+      <p><strong>Déjeuner :</strong> Omelette aux champignons + salade de lentilles</p>
+      <p><strong>Dîner :</strong> Courgettes farcies au quinoa</p>
+    </div>
+  </section>
+
+  <section id="dimanche" style="display:none">
+    <div class="recipe">
+      <h3>Dimanche</h3>
+      <p><strong>Petit-déjeuner :</strong> Pancakes à la banane + sirop d’agave</p>
+      <p><strong>Déjeuner :</strong> Poulet rôti + haricots verts vapeur + semoule complète</p>
+      <p><strong>Dîner :</strong> Tartine avocat + œuf poché</p>
+    </div>
+  </section>
+
+  <section id="astuces" style="display:none">
+    <div class="recipe">
+      <h3>🛠️ Astuces et substitutions</h3>
+      <ul>
+        <li><strong>Skyr :</strong> fromage blanc ou yaourt grec</li>
+        <li><strong>Courgettes :</strong> ⇄ carottes, haricots verts, champignons</li>
+        <li><strong>Pas de viande ?</strong> Utilisez lentilles, pois chiches ou tofu grillé</li>
+        <li><strong>Riz :</strong> ⇄ semoule, quinoa, patate douce</li>
+        <li><strong>Prépa express :</strong> cuisson en avance et assemblage rapide</li>
+        <li><strong>Sans lactose :</strong> remplacez le skyr par du yaourt végétal</li>
+      </ul>
+    </div>
+  </section>
+</body>
+</html>
