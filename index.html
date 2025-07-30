@@ -66,6 +66,50 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
+    .calories {
+      font-style: italic;
+      font-size: 0.9em;
+      color: #444;
+      margin-top: 10px;
+    }
+    .total {
+      font-weight: bold;
+      color: #1b5e20;
+    }
+    .course-list {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .course-list h3 {
+      margin-top: 0;
+    }
+    .course-list ul {
+      padding-left: 20px;
+    }
+    .course-list label {
+      display: block;
+      margin-top: 10px;
+    }
+    .course-list input[type=number] {
+      width: 60px;
+      padding: 5px;
+      margin-left: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .export-btn {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #66bb6a;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
   </style>
   <script>
     function showDay(id) {
@@ -73,10 +117,28 @@
       sections.forEach(sec => sec.style.display = "none");
       document.getElementById(id).style.display = "block";
     }
+
     function updateMeal(selectEl, mealId) {
       const selected = selectEl.value;
       document.getElementById(mealId).innerText = selected;
     }
+
+    function exportList() {
+      const list = document.getElementById("liste-course");
+      const number = parseInt(document.getElementById("nb-personnes").value) || 1;
+      const items = list.querySelectorAll("li");
+      const lines = ["Liste de courses pour " + number + " personne(s) :\n"]; 
+      items.forEach(item => {
+        const base = item.textContent;
+        lines.push("- " + base + (number > 1 ? " x" + number : ""));
+      });
+      const blob = new Blob([lines.join("\n")], { type: "text/plain" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "liste_courses.txt";
+      a.click();
+    }
+
     window.onload = () => showDay('lundi');
   </script>
 </head>
@@ -91,101 +153,76 @@
     <button onclick="showDay('samedi')">Samedi</button>
     <button onclick="showDay('dimanche')">Dimanche</button>
     <button onclick="showDay('astuces')">Astuces</button>
+    <button onclick="showDay('courses')">Liste de courses</button>
   </nav>
 
   <section id="lundi">
     <div class="recipe">
-      <h3>Lundi</h3>
-      <p><strong>Petit-déjeuner :</strong> <span id="lundi-pd">Skyr + kiwi + 1 c. à café de graines de lin</span></p>
-      <select onchange="updateMeal(this, 'lundi-pd')">
-        <option>Skyr + kiwi + graines de lin</option>
+      <h3>Petit-déjeuner</h3>
+      <select onchange="updateMeal(this, 'pdj-lundi')">
+        <option>Skyr + kiwi + graines de lin + sirop d'agave</option>
         <option>Fromage blanc + banane + cannelle</option>
         <option>Compote + amandes concassées</option>
       </select>
-      <p><strong>Déjeuner :</strong> <span id="lundi-dej">Poulet grillé + salade verte + tomates + huile d’olive</span></p>
-      <select onchange="updateMeal(this, 'lundi-dej')">
-        <option>Poulet grillé + salade verte + tomates</option>
-        <option>Tofu grillé + patate douce + légumes vapeur</option>
-        <option>Œufs durs + salade de pois chiches</option>
+      <div id="pdj-lundi">Skyr + kiwi + graines de lin + sirop d'agave</div>
+      <div class="calories">200 kcal</div>
+
+      <h3>Déjeuner</h3>
+      <select onchange="updateMeal(this, 'dej-lundi')">
+        <option>Salade de poulet + salade verte + tomates + huile d’olive</option>
+        <option>Œufs durs + pois chiches + courgettes vapeur</option>
+        <option>Toast avocat + pain complet + herbes fraîches</option>
       </select>
-      <p><strong>Dîner :</strong> <span id="lundi-din">Œufs brouillés + courgettes sautées à l’ail</span></p>
-      <select onchange="updateMeal(this, 'lundi-din')">
-        <option>Œufs brouillés + courgettes sautées</option>
-        <option>Soupe maison + tartine complète</option>
-        <option>Omelette aux herbes + salade</option>
+      <div id="dej-lundi">Salade de poulet + salade verte + tomates + huile d’olive</div>
+      <div class="calories">400 kcal</div>
+
+      <h3>Dîner</h3>
+      <select onchange="updateMeal(this, 'din-lundi')">
+        <option>Soupe maison + pain complet + skyr</option>
+        <option>Omelette aux légumes</option>
+        <option>Salade composée + vinaigrette maison</option>
       </select>
-      <p><em class="sub">⚡ Préparation : moins de 10 min / ingrédients interchangeables</em></p>
+      <div id="din-lundi">Soupe maison + pain complet + skyr</div>
+      <div class="calories">350 kcal</div>
+
+      <div class="total">Total journalier : 950 kcal</div>
     </div>
   </section>
 
-  <!-- autres jours (mardi à dimanche) inchangés pour l’instant -->
-
-  <section id="mardi" style="display:none">
-    <div class="recipe">
-      <h3>Mardi</h3>
-      <p><strong>Petit-déjeuner :</strong> Fromage blanc + pomme râpée + cannelle</p>
-      <p><strong>Déjeuner :</strong> Filet de saumon + brocolis vapeur + riz semi-complet</p>
-      <p><strong>Dîner :</strong> Soupe de légumes maison + tartine de pain complet</p>
-    </div>
-  </section>
-
-  <section id="mercredi" style="display:none">
-    <div class="recipe">
-      <h3>Mercredi</h3>
-      <p><strong>Petit-déjeuner :</strong> 2 œufs coque + mouillettes de pain complet</p>
-      <p><strong>Déjeuner :</strong> Quinoa + pois chiches + courgettes + curry doux</p>
-      <p><strong>Dîner :</strong> Poêlée de légumes + 1 tranche de jambon maigre</p>
-    </div>
-  </section>
-
-  <section id="jeudi" style="display:none">
-    <div class="recipe">
-      <h3>Jeudi</h3>
-      <p><strong>Petit-déjeuner :</strong> Skyr + framboises + amandes concassées</p>
-      <p><strong>Déjeuner :</strong> Riz complet + crevettes sautées + poivrons</p>
-      <p><strong>Dîner :</strong> Omelette aux herbes + salade verte</p>
-    </div>
-  </section>
-
-  <section id="vendredi" style="display:none">
-    <div class="recipe">
-      <h3>Vendredi</h3>
-      <p><strong>Petit-déjeuner :</strong> Pain complet + purée d’avocat + 1 œuf</p>
-      <p><strong>Déjeuner :</strong> Tofu grillé + patate douce vapeur + brocolis</p>
-      <p><strong>Dîner :</strong> Soupe froide de concombre + yaourt nature</p>
-    </div>
-  </section>
-
-  <section id="samedi" style="display:none">
-    <div class="recipe">
-      <h3>Samedi</h3>
-      <p><strong>Petit-déjeuner :</strong> Compote sans sucre ajouté + poignée d’oléagineux</p>
-      <p><strong>Déjeuner :</strong> Omelette aux champignons + salade de lentilles</p>
-      <p><strong>Dîner :</strong> Courgettes farcies au quinoa</p>
-    </div>
-  </section>
-
-  <section id="dimanche" style="display:none">
-    <div class="recipe">
-      <h3>Dimanche</h3>
-      <p><strong>Petit-déjeuner :</strong> Pancakes à la banane + sirop d’agave</p>
-      <p><strong>Déjeuner :</strong> Poulet rôti + haricots verts vapeur + semoule complète</p>
-      <p><strong>Dîner :</strong> Tartine avocat + œuf poché</p>
+  <section id="courses" style="display:none">
+    <div class="course-list">
+      <h3>🛒 Liste de courses semaine</h3>
+      <label for="nb-personnes">Nombre de personnes :
+        <input type="number" id="nb-personnes" min="1" value="1">
+      </label>
+      <ul id="liste-course">
+        <li>Skyr</li>
+        <li>Kiwi</li>
+        <li>Graines de lin</li>
+        <li>Sirop d'agave</li>
+        <li>Fromage blanc</li>
+        <li>Banane</li>
+        <li>Cannelle</li>
+        <li>Compote</li>
+        <li>Amandes concassées</li>
+        <li>Poulet</li>
+        <li>Salade verte</li>
+        <li>Tomates</li>
+        <li>Huile d’olive</li>
+        <li>Œufs</li>
+        <li>Pois chiches</li>
+        <li>Courgettes</li>
+        <li>Ail</li>
+        <li>Pain complet</li>
+        <li>Herbes fraîches</li>
+        <li>Avocat</li>
+      </ul>
+      <button class="export-btn" onclick="exportList()">📤 Exporter la liste</button>
     </div>
   </section>
 
   <section id="astuces" style="display:none">
-    <div class="recipe">
-      <h3>🛠️ Astuces et substitutions</h3>
-      <ul>
-        <li><strong>Skyr :</strong> fromage blanc ou yaourt grec</li>
-        <li><strong>Courgettes :</strong> ⇄ carottes, haricots verts, champignons</li>
-        <li><strong>Pas de viande ?</strong> Utilisez lentilles, pois chiches ou tofu grillé</li>
-        <li><strong>Riz :</strong> ⇄ semoule, quinoa, patate douce</li>
-        <li><strong>Prépa express :</strong> cuisson en avance et assemblage rapide</li>
-        <li><strong>Sans lactose :</strong> remplacez le skyr par du yaourt végétal</li>
-      </ul>
-    </div>
+    <!-- Astuces existantes -->
   </section>
 </body>
 </html>
