@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Régime Express – 55 ans, 1m65, 75kg</title>
+  <title>Corps de Rêve – Programme 30 Jours</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f0fdf4;
+      margin: 0;
+      background-color: #f3fcf4;
       color: #333;
     }
     header {
-      background-color: #4CAF50;
-      padding: 20px;
+      background-color: #2e7d32;
       color: white;
+      padding: 20px;
       text-align: center;
       font-size: 1.8em;
       font-weight: bold;
@@ -23,206 +23,148 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      background: #e8f5e9;
       padding: 10px;
+      background-color: #e8f5e9;
     }
     nav button {
       margin: 5px;
       padding: 10px 15px;
-      border-radius: 20px;
-      background: #a5d6a7;
       border: none;
-      font-weight: bold;
+      background-color: #a5d6a7;
       color: #1b5e20;
+      border-radius: 20px;
+      font-weight: bold;
       cursor: pointer;
     }
     nav button:hover {
-      background: #81c784;
+      background-color: #81c784;
     }
     section {
+      display: none;
       max-width: 700px;
       margin: 30px auto;
       padding: 0 20px;
     }
+    .active {
+      display: block;
+    }
     .recipe {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background-color: #fff;
       padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       margin-bottom: 30px;
     }
     .recipe h3 {
       margin-top: 0;
       color: #388e3c;
     }
-    .sub {
-      font-size: 0.9em;
-      color: #777;
-    }
-    select {
-      margin-top: 10px;
-      padding: 5px;
-      width: 100%;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
     .calories {
-      font-style: italic;
       font-size: 0.9em;
-      color: #444;
-      margin-top: 10px;
+      font-style: italic;
+      color: #666;
     }
     .total {
       font-weight: bold;
+      margin-top: 10px;
       color: #1b5e20;
     }
-    .course-list {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 40px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .course-list h3 {
-      margin-top: 0;
-    }
-    .course-list ul {
-      padding-left: 20px;
-    }
-    .course-list label {
-      display: block;
+    select {
       margin-top: 10px;
-    }
-    .course-list input[type=number] {
-      width: 60px;
-      padding: 5px;
-      margin-left: 10px;
+      padding: 6px;
+      border-radius: 6px;
+      width: 100%;
       border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .export-btn {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #66bb6a;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
     }
   </style>
   <script>
     function showDay(id) {
-      const sections = document.querySelectorAll("section[id]");
-      sections.forEach(sec => sec.style.display = "none");
-      document.getElementById(id).style.display = "block";
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
-
-    function updateMeal(selectEl, mealId) {
-      const selected = selectEl.value;
-      document.getElementById(mealId).innerText = selected;
+    function updateMeal(selectEl, targetId) {
+      document.getElementById(targetId).innerText = selectEl.value;
     }
-
-    function exportList() {
-      const list = document.getElementById("liste-course");
-      const number = parseInt(document.getElementById("nb-personnes").value) || 1;
-      const items = list.querySelectorAll("li");
-      const lines = ["Liste de courses pour " + number + " personne(s) :\n"]; 
-      items.forEach(item => {
-        const base = item.textContent;
-        lines.push("- " + base + (number > 1 ? " x" + number : ""));
-      });
-      const blob = new Blob([lines.join("\n")], { type: "text/plain" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "liste_courses.txt";
-      a.click();
-    }
-
-    window.onload = () => showDay('lundi');
   </script>
 </head>
 <body>
-  <header>🌿 Corps Harmonieux – Régime Anti-Cellulite</header>
+  <header>🌿 Corps de Rêve – Programme 30 Jours</header>
   <nav>
-    <button onclick="showDay('lundi')">Lundi</button>
-    <button onclick="showDay('mardi')">Mardi</button>
-    <button onclick="showDay('mercredi')">Mercredi</button>
-    <button onclick="showDay('jeudi')">Jeudi</button>
-    <button onclick="showDay('vendredi')">Vendredi</button>
-    <button onclick="showDay('samedi')">Samedi</button>
-    <button onclick="showDay('dimanche')">Dimanche</button>
-    <button onclick="showDay('astuces')">Astuces</button>
-    <button onclick="showDay('courses')">Liste de courses</button>
+    <button onclick="showDay('jour1')">Jour 1</button>
+    <button onclick="showDay('jour2')">Jour 2</button>
+    <button onclick="showDay('jour3')">Jour 3</button>
+    <button onclick="showDay('jour4')">Jour 4</button>
+    <button onclick="showDay('jour5')">Jour 5</button>
+    <button onclick="showDay('jour6')">Jour 6</button>
+    <button onclick="showDay('jour7')">Jour 7</button>
   </nav>
 
-  <section id="lundi">
+  <section id="jour1" class="active">
     <div class="recipe">
       <h3>Petit-déjeuner</h3>
-      <select onchange="updateMeal(this, 'pdj-lundi')">
+      <select onchange="updateMeal(this, 'pdj1')">
         <option>Skyr + kiwi + graines de lin + sirop d'agave</option>
         <option>Fromage blanc + banane + cannelle</option>
         <option>Compote + amandes concassées</option>
       </select>
-      <div id="pdj-lundi">Skyr + kiwi + graines de lin + sirop d'agave</div>
-      <div class="calories">200 kcal</div>
-
-      <h3>Déjeuner</h3>
-      <select onchange="updateMeal(this, 'dej-lundi')">
-        <option>Salade de poulet + salade verte + tomates + huile d’olive</option>
-        <option>Œufs durs + pois chiches + courgettes vapeur</option>
-        <option>Toast avocat + pain complet + herbes fraîches</option>
-      </select>
-      <div id="dej-lundi">Salade de poulet + salade verte + tomates + huile d’olive</div>
-      <div class="calories">400 kcal</div>
-
-      <h3>Dîner</h3>
-      <select onchange="updateMeal(this, 'din-lundi')">
-        <option>Soupe maison + pain complet + skyr</option>
-        <option>Omelette aux légumes</option>
-        <option>Salade composée + vinaigrette maison</option>
-      </select>
-      <div id="din-lundi">Soupe maison + pain complet + skyr</div>
+      <div id="pdj1">Skyr + kiwi + graines de lin + sirop d'agave</div>
       <div class="calories">350 kcal</div>
 
-      <div class="total">Total journalier : 950 kcal</div>
+      <h3>Déjeuner</h3>
+      <select onchange="updateMeal(this, 'dej1')">
+        <option>Salade de poulet + crudités + huile d'olive</option>
+        <option>Omelette aux épinards + pain complet</option>
+        <option>Wrap au saumon fumé et crudités</option>
+      </select>
+      <div id="dej1">Salade de poulet + crudités + huile d'olive</div>
+      <div class="calories">600 kcal</div>
+
+      <h3>Dîner</h3>
+      <select onchange="updateMeal(this, 'din1')">
+        <option>Soupe de légumes + skyr</option>
+        <option>Salade composée + graines de courge</option>
+        <option>Riz complet + légumes grillés</option>
+      </select>
+      <div id="din1">Soupe de légumes + skyr</div>
+      <div class="calories">450 kcal</div>
+
+      <div class="total">Total journalier : 1400 kcal</div>
     </div>
   </section>
 
-  <section id="courses" style="display:none">
-    <div class="course-list">
-      <h3>🛒 Liste de courses semaine</h3>
-      <label for="nb-personnes">Nombre de personnes :
-        <input type="number" id="nb-personnes" min="1" value="1">
-      </label>
-      <ul id="liste-course">
-        <li>Skyr</li>
-        <li>Kiwi</li>
-        <li>Graines de lin</li>
-        <li>Sirop d'agave</li>
-        <li>Fromage blanc</li>
-        <li>Banane</li>
-        <li>Cannelle</li>
-        <li>Compote</li>
-        <li>Amandes concassées</li>
-        <li>Poulet</li>
-        <li>Salade verte</li>
-        <li>Tomates</li>
-        <li>Huile d’olive</li>
-        <li>Œufs</li>
-        <li>Pois chiches</li>
-        <li>Courgettes</li>
-        <li>Ail</li>
-        <li>Pain complet</li>
-        <li>Herbes fraîches</li>
-        <li>Avocat</li>
-      </ul>
-      <button class="export-btn" onclick="exportList()">📤 Exporter la liste</button>
+  <section id="jour2">
+    <div class="recipe">
+      <h3>Petit-déjeuner</h3>
+      <select onchange="updateMeal(this, 'pdj2')">
+        <option>Fromage blanc + pomme râpée + sirop d’agave</option>
+        <option>Skyr + framboises + graines de chia</option>
+        <option>Pain complet + purée d’amandes</option>
+      </select>
+      <div id="pdj2">Fromage blanc + pomme râpée + sirop d’agave</div>
+      <div class="calories">380 kcal</div>
+
+      <h3>Déjeuner</h3>
+      <select onchange="updateMeal(this, 'dej2')">
+        <option>Quinoa + pois chiches + tomates cerises</option>
+        <option>Filet de saumon + brocolis vapeur</option>
+        <option>Galette de légumes + crudités</option>
+      </select>
+      <div id="dej2">Quinoa + pois chiches + tomates cerises</div>
+      <div class="calories">630 kcal</div>
+
+      <h3>Dîner</h3>
+      <select onchange="updateMeal(this, 'din2')">
+        <option>Soupe maison + œuf dur</option>
+        <option>Salade composée + pain grillé</option>
+        <option>Riz + courgettes + huile d’olive</option>
+      </select>
+      <div id="din2">Soupe maison + œuf dur</div>
+      <div class="calories">450 kcal</div>
+
+      <div class="total">Total journalier : 1460 kcal</div>
     </div>
   </section>
 
-  <section id="astuces" style="display:none">
-    <!-- Astuces existantes -->
-  </section>
+  <!-- Tu pourras copier-coller et adapter les sections pour les jours 3 à 30 en suivant ce modèle. -->
 </body>
 </html>
