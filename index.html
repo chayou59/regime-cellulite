@@ -5,77 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Corps de Rêve – Programme 30 Jours</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background-color: #f3fcf4;
-      color: #333;
-    }
-    header {
-      background-color: #2e7d32;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 1.8em;
-      font-weight: bold;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px;
-      background-color: #e8f5e9;
-    }
-    nav button {
-      margin: 5px;
-      padding: 10px 15px;
-      border: none;
-      background-color: #a5d6a7;
-      color: #1b5e20;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    nav button:hover {
-      background-color: #81c784;
-    }
-    section {
-      display: none;
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-    .active {
-      display: block;
-    }
-    .recipe {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-    }
-    .recipe h3 {
-      margin-top: 0;
-      color: #388e3c;
-    }
-    .calories {
-      font-size: 0.9em;
-      font-style: italic;
-      color: #666;
-    }
-    .total {
-      font-weight: bold;
-      margin-top: 10px;
-      color: #1b5e20;
-    }
-    select {
-      margin-top: 10px;
-      padding: 6px;
-      border-radius: 6px;
-      width: 100%;
-      border: 1px solid #ccc;
-    }
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f3fcf4; color: #333; }
+    header { background-color: #2e7d32; color: white; padding: 20px; text-align: center; font-size: 1.8em; font-weight: bold; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; padding: 10px; background-color: #e8f5e9; }
+    nav button { margin: 5px; padding: 10px 15px; border: none; background-color: #a5d6a7; color: #1b5e20; border-radius: 20px; font-weight: bold; cursor: pointer; }
+    nav button:hover { background-color: #81c784; }
+    section { display: none; max-width: 700px; margin: 30px auto; padding: 0 20px; }
+    .active { display: block; }
+    .recipe { background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 30px; }
+    .recipe h3 { margin-top: 0; color: #388e3c; }
+    .calories { font-size: 0.9em; font-style: italic; color: #666; }
+    .total { font-weight: bold; margin-top: 10px; color: #1b5e20; }
+    select { margin-top: 10px; padding: 6px; border-radius: 6px; width: 100%; border: 1px solid #ccc; }
   </style>
   <script>
     function showDay(id) {
@@ -99,72 +40,138 @@
     <button onclick="showDay('jour7')">Jour 7</button>
   </nav>
 
-  <section id="jour1" class="active">
+  <!-- Les sections jour1 à jour3 sont déjà présentes -->
+
+  <section id="jour4">
     <div class="recipe">
       <h3>Petit-déjeuner</h3>
-      <select onchange="updateMeal(this, 'pdj1')">
-        <option>Skyr + kiwi + graines de lin + sirop d'agave</option>
-        <option>Fromage blanc + banane + cannelle</option>
-        <option>Compote + amandes concassées</option>
+      <select onchange="updateMeal(this, 'pdj4')">
+        <option>Skyr + flocons d’avoine + poire râpée + sirop d’agave</option>
+        <option>Pain complet + purée de noisette + thé</option>
+        <option>Compote + graines de tournesol + fromage blanc</option>
       </select>
-      <div id="pdj1">Skyr + kiwi + graines de lin + sirop d'agave</div>
-      <div class="calories">350 kcal</div>
+      <div id="pdj4">Skyr + flocons d’avoine + poire râpée + sirop d’agave</div>
+      <div class="calories">400 kcal</div>
 
       <h3>Déjeuner</h3>
-      <select onchange="updateMeal(this, 'dej1')">
-        <option>Salade de poulet + crudités + huile d'olive</option>
-        <option>Omelette aux épinards + pain complet</option>
-        <option>Wrap au saumon fumé et crudités</option>
+      <select onchange="updateMeal(this, 'dej4')">
+        <option>Salade lentilles corail + feta + tomates</option>
+        <option>Saumon + riz basmati + légumes vapeur</option>
+        <option>Omelette + pommes de terre vapeur + crudités</option>
       </select>
-      <div id="dej1">Salade de poulet + crudités + huile d'olive</div>
-      <div class="calories">600 kcal</div>
+      <div id="dej4">Salade lentilles corail + feta + tomates</div>
+      <div class="calories">620 kcal</div>
 
       <h3>Dîner</h3>
-      <select onchange="updateMeal(this, 'din1')">
-        <option>Soupe de légumes + skyr</option>
-        <option>Salade composée + graines de courge</option>
-        <option>Riz complet + légumes grillés</option>
+      <select onchange="updateMeal(this, 'din4')">
+        <option>Soupe maison + œuf mollet</option>
+        <option>Légumes poêlés + fromage blanc</option>
+        <option>Salade verte + pois chiches</option>
       </select>
-      <div id="din1">Soupe de légumes + skyr</div>
-      <div class="calories">450 kcal</div>
+      <div id="din4">Soupe maison + œuf mollet</div>
+      <div class="calories">480 kcal</div>
 
-      <div class="total">Total journalier : 1400 kcal</div>
+      <div class="total">Total journalier : 1500 kcal</div>
     </div>
   </section>
 
-  <section id="jour2">
+  <section id="jour5">
     <div class="recipe">
       <h3>Petit-déjeuner</h3>
-      <select onchange="updateMeal(this, 'pdj2')">
-        <option>Fromage blanc + pomme râpée + sirop d’agave</option>
-        <option>Skyr + framboises + graines de chia</option>
-        <option>Pain complet + purée d’amandes</option>
+      <select onchange="updateMeal(this, 'pdj5')">
+        <option>Skyr + banane + noix concassées + sirop d’agave</option>
+        <option>Fromage blanc + compote sans sucre + flocons d’avoine</option>
+        <option>Pain grillé + purée d’amande + café</option>
       </select>
-      <div id="pdj2">Fromage blanc + pomme râpée + sirop d’agave</div>
-      <div class="calories">380 kcal</div>
+      <div id="pdj5">Skyr + banane + noix concassées + sirop d’agave</div>
+      <div class="calories">390 kcal</div>
 
       <h3>Déjeuner</h3>
-      <select onchange="updateMeal(this, 'dej2')">
-        <option>Quinoa + pois chiches + tomates cerises</option>
-        <option>Filet de saumon + brocolis vapeur</option>
-        <option>Galette de légumes + crudités</option>
+      <select onchange="updateMeal(this, 'dej5')">
+        <option>Wrap complet + crudités + sardines</option>
+        <option>Galette de sarrasin + œuf + champignons</option>
+        <option>Taboulé au boulgour + pois chiches</option>
       </select>
-      <div id="dej2">Quinoa + pois chiches + tomates cerises</div>
+      <div id="dej5">Wrap complet + crudités + sardines</div>
+      <div class="calories">610 kcal</div>
+
+      <h3>Dîner</h3>
+      <select onchange="updateMeal(this, 'din5')">
+        <option>Soupe verte + tartine grillée fromage frais</option>
+        <option>Salade de carottes râpées + riz + skyr</option>
+        <option>Légumes rôtis + œuf dur</option>
+      </select>
+      <div id="din5">Soupe verte + tartine grillée fromage frais</div>
+      <div class="calories">470 kcal</div>
+
+      <div class="total">Total journalier : 1470 kcal</div>
+    </div>
+  </section>
+
+  <section id="jour6">
+    <div class="recipe">
+      <h3>Petit-déjeuner</h3>
+      <select onchange="updateMeal(this, 'pdj6')">
+        <option>Skyr + pomme râpée + cannelle + sirop d’agave</option>
+        <option>Fromage blanc + fruits rouges + graines de chia</option>
+        <option>Pain complet + purée d’oléagineux</option>
+      </select>
+      <div id="pdj6">Skyr + pomme râpée + cannelle + sirop d’agave</div>
+      <div class="calories">370 kcal</div>
+
+      <h3>Déjeuner</h3>
+      <select onchange="updateMeal(this, 'dej6')">
+        <option>Salade quinoa + thon + légumes grillés</option>
+        <option>Riz + tofu fumé + courgettes (option non utilisée)</option>
+        <option>Poêlée de légumes + œuf poché</option>
+      </select>
+      <div id="dej6">Salade quinoa + thon + légumes grillés</div>
       <div class="calories">630 kcal</div>
 
       <h3>Dîner</h3>
-      <select onchange="updateMeal(this, 'din2')">
-        <option>Soupe maison + œuf dur</option>
-        <option>Salade composée + pain grillé</option>
-        <option>Riz + courgettes + huile d’olive</option>
+      <select onchange="updateMeal(this, 'din6')">
+        <option>Velouté potimarron + tartine chèvre frais</option>
+        <option>Poêlée haricots verts + patate douce</option>
+        <option>Salade composée + yaourt nature</option>
       </select>
-      <div id="din2">Soupe maison + œuf dur</div>
-      <div class="calories">450 kcal</div>
+      <div id="din6">Velouté potimarron + tartine chèvre frais</div>
+      <div class="calories">490 kcal</div>
 
-      <div class="total">Total journalier : 1460 kcal</div>
+      <div class="total">Total journalier : 1490 kcal</div>
     </div>
   </section>
 
-  <!-- Tu pourras copier-coller et adapter les sections pour les jours 3 à 30 en suivant ce modèle. -->
+  <section id="jour7">
+    <div class="recipe">
+      <h3>Petit-déjeuner</h3>
+      <select onchange="updateMeal(this, 'pdj7')">
+        <option>Fromage blanc + framboises + noix + sirop d’agave</option>
+        <option>Skyr + banane + graines de lin</option>
+        <option>Pain grillé + purée de cacahuète + thé</option>
+      </select>
+      <div id="pdj7">Fromage blanc + framboises + noix + sirop d’agave</div>
+      <div class="calories">400 kcal</div>
+
+      <h3>Déjeuner</h3>
+      <select onchange="updateMeal(this, 'dej7')">
+        <option>Pâtes complètes + sauce tomate maison + sardines</option>
+        <option>Soupe pois cassés + œuf dur</option>
+        <option>Salade verte + lentilles + crudités</option>
+      </select>
+      <div id="dej7">Pâtes complètes + sauce tomate maison + sardines</div>
+      <div class="calories">630 kcal</div>
+
+      <h3>Dîner</h3>
+      <select onchange="updateMeal(this, 'din7')">
+        <option>Soupe courgette + fromage blanc</option>
+        <option>Légumes rôtis + œuf cocotte</option>
+        <option>Salade composée + tartine grillée</option>
+      </select>
+      <div id="din7">Soupe courgette + fromage blanc</div>
+      <div class="calories">460 kcal</div>
+
+      <div class="total">Total journalier : 1490 kcal</div>
+    </div>
+  </section>
 </body>
 </html>
