@@ -59,12 +59,23 @@
       font-size: 0.9em;
       color: #777;
     }
+    select {
+      margin-top: 10px;
+      padding: 5px;
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
   </style>
   <script>
     function showDay(id) {
       const sections = document.querySelectorAll("section[id]");
       sections.forEach(sec => sec.style.display = "none");
       document.getElementById(id).style.display = "block";
+    }
+    function updateMeal(selectEl, mealId) {
+      const selected = selectEl.value;
+      document.getElementById(mealId).innerText = selected;
     }
     window.onload = () => showDay('lundi');
   </script>
@@ -85,12 +96,29 @@
   <section id="lundi">
     <div class="recipe">
       <h3>Lundi</h3>
-      <p><strong>Petit-déjeuner :</strong> Skyr + kiwi + 1 c. à café de graines de lin</p>
-      <p><strong>Déjeuner :</strong> Poulet grillé + salade verte + tomates + huile d’olive</p>
-      <p><strong>Dîner :</strong> Œufs brouillés + courgettes sautées à l’ail</p>
+      <p><strong>Petit-déjeuner :</strong> <span id="lundi-pd">Skyr + kiwi + 1 c. à café de graines de lin</span></p>
+      <select onchange="updateMeal(this, 'lundi-pd')">
+        <option>Skyr + kiwi + graines de lin</option>
+        <option>Fromage blanc + banane + cannelle</option>
+        <option>Compote + amandes concassées</option>
+      </select>
+      <p><strong>Déjeuner :</strong> <span id="lundi-dej">Poulet grillé + salade verte + tomates + huile d’olive</span></p>
+      <select onchange="updateMeal(this, 'lundi-dej')">
+        <option>Poulet grillé + salade verte + tomates</option>
+        <option>Tofu grillé + patate douce + légumes vapeur</option>
+        <option>Œufs durs + salade de pois chiches</option>
+      </select>
+      <p><strong>Dîner :</strong> <span id="lundi-din">Œufs brouillés + courgettes sautées à l’ail</span></p>
+      <select onchange="updateMeal(this, 'lundi-din')">
+        <option>Œufs brouillés + courgettes sautées</option>
+        <option>Soupe maison + tartine complète</option>
+        <option>Omelette aux herbes + salade</option>
+      </select>
       <p><em class="sub">⚡ Préparation : moins de 10 min / ingrédients interchangeables</em></p>
     </div>
   </section>
+
+  <!-- autres jours (mardi à dimanche) inchangés pour l’instant -->
 
   <section id="mardi" style="display:none">
     <div class="recipe">
